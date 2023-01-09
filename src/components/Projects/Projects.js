@@ -34,7 +34,7 @@ function Projects() {
           </Col>
           <Col lg={6} className="project-card">
             <ProjectCard
-              imgPath={"/img/phonealone.png"}
+              imgPath={"./img/phonealone.png"}
               isBlog={false}
               title="PhoneAlone"
               description="Smartphone E-commerce projects using MERN Stack, complete with CRUD for user/product/order, Login/Register, Add Review, Payment using Stripe API, data visualization and many more FUNCTIONALITIES."
@@ -45,7 +45,7 @@ function Projects() {
 
           <Col lg={6} className="project-card">
             <ProjectCard
-              imgPath={"/img/randomquotemachine-react.jpg"}
+              imgPath={"./img/randomquotemachine-react.jpg"}
               isBlog={false}
               title="Random Quote Machine"
               description="A simple random quote machine project using React for FreeCodeCamp Certification. Additional CDNs used were React-DOM, Babel, JQuery, Bootstrap 5, Font-awesome and the FCC testable project"
@@ -56,7 +56,7 @@ function Projects() {
 
           <Col lg={6} className="project-card">
             <ProjectCard
-              imgPath={"/img/markdownpreviewer-react.jpg"}
+              imgPath={"./img/markdownpreviewer-react.jpg"}
               isBlog={false}
               title="Markdown Previewer"
               description="A simple markdown previewer project using React for FreeCodeCamp Certification. Additional CDNs used were React-DOM, Babel, Bootstrap 5, Marked and the FCC testable project"
@@ -67,7 +67,7 @@ function Projects() {
 
           <Col lg={6} className="project-card">
             <ProjectCard
-              imgPath={"/img/drummachine-react.jpg"}
+              imgPath={"./img/drummachine-react.jpg"}
               isBlog={false}
               title="Drum Machine"
               description="A simple markdown previewer project using React for FreeCodeCamp Certification. Additional CDNs used were React-DOM, Babel, Bootstrap 5 and the FCC testable project"
@@ -78,7 +78,7 @@ function Projects() {
 
           <Col lg={6} className="project-card">
             <ProjectCard
-              imgPath={"/img/jscalculator-react.jpg"}
+              imgPath={"./img/jscalculator-react.jpg"}
               isBlog={false}
               title="Javascript Calculator"
               description="A simple javascript calculator project using React for FreeCodeCamp Certification. Additional CDNs used were React-DOM, Babel, Bootstrap 5 and the FCC testable project"
@@ -89,7 +89,7 @@ function Projects() {
 
           <Col lg={6} className="project-card">
             <ProjectCard
-              imgPath={"/img/pomodorotimer-react.jpg"}
+              imgPath={"./img/pomodorotimer-react.jpg"}
               isBlog={false}
               title="Pomodoro Timer"
               description="A simple javascript calculator project using React for FreeCodeCamp Certification. Additional CDNs used were React-DOM, Babel, Materialize, Material Icons and the FCC testable project"

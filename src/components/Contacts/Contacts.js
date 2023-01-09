@@ -104,7 +104,7 @@ function Contacts() {
                 ulClassName="p-0 m-1 p-2"
                 liClassName="p-3 d-inline h2"
               />
-              <a href="CV.pdf" target="_blank" rel="noopener noreferrer">
+              <a href="./CV.pdf" target="_blank" rel="noopener noreferrer">
                 <div className="btn w-100 project-btn m-2 p-2">
                   <MdDownload /> DOWNLOAD CV
                 </div>
