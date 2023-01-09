@@ -20,6 +20,9 @@ import {
   SiHeroku,
   SiGithub,
   SiGitlab,
+  SiFirebase,
+  SiJira,
+  SiTrello
 } from "react-icons/si";
 import Particle from "../Utils/Particle";
 import ReactiveButton from "../Utils/ReactiveButton.js";
@@ -75,6 +78,7 @@ function About() {
           <Techstack logo={<DiPython />} desc="Python" />
           <Techstack logo={<CgCPlusPlus />} desc="C++" />
           <Techstack logo={<DiGit />} desc="Git" />
+          <Techstack logo={<SiFirebase />} desc="Firebase" />
         </Row>
         <h1 className="page-heading">Tech Tools</h1>
         <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
@@ -83,6 +87,8 @@ function About() {
           <Techstack logo={<SiPostman />} desc="Postman" />
           <Techstack logo={<SiHeroku />} desc="Heroku" />
           <Techstack logo={<SiGitlab />} desc="Gitlab" />
+          <Techstack logo={<SiJira />} desc="Jira" />
+          <Techstack logo={<SiTrello />} desc="Trello" />
         </Row>
       </Container>
     </Container>

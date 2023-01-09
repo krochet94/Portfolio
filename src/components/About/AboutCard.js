@@ -21,18 +21,19 @@ function AboutCard() {
       <Card.Body>
         <blockquote className="blockquote mb-0">
           <p style={{ textAlign: "justify" }}>
-            <strong className="empasis">Full Stack Web Developer</strong> with
-            proficiency in{" "}
-            <strong className="empasis">MERN Stack Technology.</strong>
-            <br />
-            Hard-working developer with a flair for creating elegant solution in
-            the least amount of time. Critical-thinker, superior learner,
-            communicates full professional English, customer oriented and
-            prioritizes work excellence.
-            <br />
-            Developed a full E-commerce website, travel agency website and
-            company website for local businesses. Involved in many social media
-            groups in web development.
+            Motivated and detail-oriented 
+            <strong className="empasis"> Full Stack Web Developer </strong>
+            specialized in
+            <strong className="empasis"> MERN Stack Technology</strong>,
+            with a passion for building modern, scalable web applications.
+            <br /><br />
+            Proficient in React.js, HTML, CSS, and JavaScript, with a strong understanding of object-oriented programming principles.
+            Skilled in working with the MERN stack (MongoDB, Express, React, Node.js) and building full-stack web applications.
+            Proficient in integrating Firebase for real-time database and authentication.
+            <br /><br />
+            Experienced in agile development
+            methodologies and working collaboratively in a team environment. Seeking a challenging and dynamic role where I can
+            utilize my skills and continue learning and growing as a developer
           </p>
           <br />
           <p>
