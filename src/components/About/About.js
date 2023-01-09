@@ -58,7 +58,7 @@ function About() {
           </Col>
           <Col xs={12} className="about-bio">
             <Col lg={5} xs={12} className="about-img">
-              <img src={"./img/about.jpg"} alt="about" className="img-fluid" />
+              <img src={"https://krochet94.github.io/Portfolio/img/about.jpg"} alt="about" className="img-fluid" />
             </Col>
             <Col lg={7} xs={12}>
               <Aboutcard />

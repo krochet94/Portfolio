@@ -36,7 +36,7 @@ function NavBar() {
     >
       <Container>
         <Navbar.Brand as={Link} to="/" className="d-flex">
-          <img src={'/img/logo.png'} className="img-fluid logo" alt="krochet" />
+          <img src={'https://krochet94.github.io/Portfolio/img/logo.png'} className="img-fluid logo" alt="krochet" />
         </Navbar.Brand>
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
