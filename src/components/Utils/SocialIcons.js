@@ -1,11 +1,21 @@
 import React from "react";
 import { AiFillGithub, AiOutlineTwitter } from "react-icons/ai";
-import { FaLinkedinIn } from "react-icons/fa";
+import { FaLinkedinIn, FaFacebook } from "react-icons/fa";
 import { SiUpwork } from "react-icons/si";
 
 function SocialIcons({ ulClassName, liClassName }) {
   return (
     <ul className={ulClassName}>
+       <li className={liClassName}>
+        <a
+          href="https://fb.com/krochet94"
+          className="text-white"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FaFacebook />
+        </a>
+      </li>
       <li className={liClassName}>
         <a
           href="https://www.linkedin.com/in/krochet94"
