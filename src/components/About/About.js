@@ -22,7 +22,8 @@ import {
   SiGitlab,
   SiFirebase,
   SiJira,
-  SiTrello
+  SiTrello,
+  SiAmazonaws
 } from "react-icons/si";
 import Particle from "../Utils/Particle";
 import ReactiveButton from "../Utils/ReactiveButton.js";
@@ -79,6 +80,7 @@ function About() {
           <Techstack logo={<CgCPlusPlus />} desc="C++" />
           <Techstack logo={<DiGit />} desc="Git" />
           <Techstack logo={<SiFirebase />} desc="Firebase" />
+          <Techstack logo={<SiAmazonaws />} desc="AWS" />
         </Row>
         <h1 className="page-heading">Tech Tools</h1>
         <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
