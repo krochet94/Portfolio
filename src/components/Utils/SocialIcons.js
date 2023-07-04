@@ -1,7 +1,6 @@
 import React from "react";
 import { AiFillGithub, AiOutlineTwitter } from "react-icons/ai";
 import { FaLinkedinIn, FaFacebook } from "react-icons/fa";
-import { SiUpwork } from "react-icons/si";
 
 function SocialIcons({ ulClassName, liClassName }) {
   return (
@@ -24,17 +23,6 @@ function SocialIcons({ ulClassName, liClassName }) {
           rel="noopener noreferrer"
         >
           <FaLinkedinIn />
-        </a>
-      </li>
-
-      <li className={liClassName}>
-        <a
-          href="https://www.upwork.com/freelancers/~012c65944a4dfd29e6"
-          style={{ color: "white" }}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <SiUpwork />
         </a>
       </li>
 

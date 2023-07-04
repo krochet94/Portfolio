@@ -1,7 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
-import { CgCPlusPlus } from "react-icons/cg";
 import {
   DiJavascript1,
   DiReact,
@@ -23,7 +22,9 @@ import {
   SiFirebase,
   SiJira,
   SiTrello,
-  SiAmazonaws
+  SiAmazonaws,
+  SiNextdotjs,
+  SiVercel
 } from "react-icons/si";
 import Particle from "../Utils/Particle";
 import ReactiveButton from "../Utils/ReactiveButton.js";
@@ -71,21 +72,22 @@ function About() {
           <Techstack logo={<DiJavascript1 />} desc="Javascript" />
           <Techstack logo={<DiReact />} desc="React" />
           <Techstack logo={<DiNodejs />} desc="Node.js" />
+          <Techstack logo={<SiNextdotjs />} desc="Next.js" />
+          <Techstack logo={<SiFirebase />} desc="Firebase" />
           <Techstack logo={<SiExpress />} desc="Express.js" />
           <Techstack logo={<DiMongodb />} desc="MongoDB" />
           <Techstack logo={<SiRedux />} desc="Redux" />
           <Techstack logo={<DiHtml5 />} desc="HTML" />
           <Techstack logo={<DiCss3 />} desc="CSS" />
           <Techstack logo={<DiPython />} desc="Python" />
-          <Techstack logo={<CgCPlusPlus />} desc="C++" />
           <Techstack logo={<DiGit />} desc="Git" />
-          <Techstack logo={<SiFirebase />} desc="Firebase" />
           <Techstack logo={<SiAmazonaws />} desc="AWS" />
         </Row>
         <h1 className="page-heading">Tech Tools</h1>
         <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
           <Techstack logo={<SiVisualstudiocode />} desc="Visual Studio" />
           <Techstack logo={<SiGithub />} desc="Github" />
+          <Techstack logo={<SiVercel />} desc="Vercel" />
           <Techstack logo={<SiPostman />} desc="Postman" />
           <Techstack logo={<SiHeroku />} desc="Heroku" />
           <Techstack logo={<SiGitlab />} desc="Gitlab" />

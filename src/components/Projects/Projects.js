@@ -32,17 +32,6 @@ function Projects() {
             cName="btn btn-lg reactive-btn p-3"
           />
           </Col>
-          
-          <Col lg={6} className="project-card">
-            <ProjectCard
-              imgPath={"https://krochet94.github.io/Portfolio/img/todoApp-reactFirebase.jpg"}
-              isBlog={false}
-              title="Simple Todo App"
-              description="A simple todo web app using React, Firebase and Mantine.dev. Have basic create, update, delete, filter and sort functionalities."
-              ghLink="https://github.com/krochet94/Simple-Todo-App"
-              demoLink="https://simple-todo-app-rose.vercel.app/"
-            />
-          </Col>
 
           <Col lg={6} className="project-card">
             <ProjectCard
@@ -52,6 +41,39 @@ function Projects() {
               description="Smartphone E-commerce projects using MERN Stack, complete with CRUD for user/product/order, Login/Register, Add Review, Payment using Stripe API, data visualization and many more FUNCTIONALITIES."
               ghLink="https://github.com/krochet94/Phone_Alone"
               demoLink="https://phone-alone.vercel.app/"
+            />
+          </Col>
+
+          <Col lg={6} className="project-card">
+            <ProjectCard
+              imgPath={"https://krochet94.github.io/Portfolio/img/time-tracker.png"}
+              isBlog={false}
+              title="Time Tracker"
+              description="A Simple Time Tracking App using React.js, Firebase(Auth, Firestore Database and Hosting) and MUI"
+              ghLink="https://github.com/krochet94/react-time-tracker"
+              demoLink="https://time-tracker-react-278d0.web.app"
+            />
+          </Col>
+          
+          <Col lg={6} className="project-card">
+            <ProjectCard
+              imgPath={"https://krochet94.github.io/Portfolio/img/todoApp-reactFirebase.jpg"}
+              isBlog={false}
+              title="Simple Todo App"
+              description="A simple todo web app using Next, Firebase and Mantine.dev. Have basic create, update, delete, filter and sort functionalities."
+              ghLink="https://github.com/krochet94/Simple-Todo-App"
+              demoLink="https://simple-todo-app-rose.vercel.app"
+            />
+          </Col>
+
+          <Col lg={6} className="project-card">
+            <ProjectCard
+              imgPath={"https://krochet94.github.io/Portfolio/img/next-simple-api.jpg"}
+              isBlog={false}
+              title="Simple Api Fetching and Display"
+              description="Simple Api Fetching and Display using NextJs and MUI."
+              ghLink="https://github.com/krochet94/nextjs-simple-api"
+              demoLink="https://nextjs-simple-api-zeta.vercel.app"
             />
           </Col>
 
