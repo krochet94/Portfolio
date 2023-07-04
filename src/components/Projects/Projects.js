@@ -68,7 +68,7 @@ function Projects() {
 
           <Col lg={6} className="project-card">
             <ProjectCard
-              imgPath={"https://krochet94.github.io/Portfolio/img/next-simple-api.jpg"}
+              imgPath={"https://krochet94.github.io/Portfolio/img/next-simple-api.png"}
               isBlog={false}
               title="Simple Api Fetching and Display"
               description="Simple Api Fetching and Display using NextJs and MUI."
