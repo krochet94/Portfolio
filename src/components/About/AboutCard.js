@@ -27,13 +27,11 @@ function AboutCard() {
             <strong className="empasis"> MERN Stack Technology</strong>,
             with a passion for building modern, scalable web applications.
             <br /><br />
-            Proficient in React.js, HTML, CSS, and JavaScript, with a strong understanding of object-oriented programming principles.
-            Skilled in working with the MERN stack (MongoDB, Express, React, Node.js) and building full-stack web applications.
-            Proficient in integrating Firebase for real-time database and authentication.
+            Proficient in Javascript, React, Node, Typescript and Python, with a strong understanding of object-oriented programming principles
+            Skilled in working with the MERN and Next.js and building full-stack web applications.
+            Proficient in integrating GCP/Firebase for realtime database and authentication
             <br /><br />
-            Experienced in agile development
-            methodologies and working collaboratively in a team environment. Seeking a challenging and dynamic role where I can
-            utilize my skills and continue learning and growing as a developer
+            Is experienced in agile development methodologies and working collaboratively in a team environment.
           </p>
           <br />
           <p>
