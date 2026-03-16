@@ -3,6 +3,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { FaArrowAltCircleLeft, FaHome } from "react-icons/fa";
 import { MdDownload, MdLocalPhone, MdLocationOn, MdOutlineEmail } from "react-icons/md";
 import emailjs, { type EmailJSResponseStatus } from "@emailjs/browser";
+import { usePortfolioContent } from "../../content/PortfolioContentContext";
 import Particle from "../Utils/Particle";
 import ReactiveButton from "../Utils/ReactiveButton";
 import SocialIcons from "../Utils/SocialIcons";
@@ -10,6 +11,7 @@ import SocialIcons from "../Utils/SocialIcons";
 function Contacts() {
   const form = useRef<HTMLFormElement | null>(null);
   const [sent, setSent] = useState(false);
+  const { content } = usePortfolioContent();
 
   const sendEmail = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -106,7 +108,7 @@ function Contacts() {
               </ul>
               <SocialIcons ulClassName="p-0 m-1 p-2" liClassName="p-3 d-inline h2" />
               <a
-                href="https://krochet94.github.io/Portfolio/CarlAragoncillo-CV.pdf"
+                href={content.contact.cvUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >

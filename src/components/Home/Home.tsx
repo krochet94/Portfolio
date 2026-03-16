@@ -1,10 +1,13 @@
 import { Col, Container, Row } from "react-bootstrap";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import Typewriter from "typewriter-effect";
+import { usePortfolioContent } from "../../content/PortfolioContentContext";
 import Particle from "../Utils/Particle";
 import ReactiveButton from "../Utils/ReactiveButton";
 
 function Home() {
+  const { content } = usePortfolioContent();
+
   return (
     <Container fluid className="home-section">
       <Particle />
@@ -24,13 +27,7 @@ function Home() {
           <div className="text-center">
             <Typewriter
               options={{
-                strings: [
-                  "MERN Stack Developer",
-                  "Fullstack Web Developer",
-                  "Javascript Developer",
-                  "Frontend Web Developer",
-                  "Backend Web Developer",
-                ],
+                strings: content.typewriterStrings,
                 autoStart: true,
                 loop: true,
                 deleteSpeed: 50,

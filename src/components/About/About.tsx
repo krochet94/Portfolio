@@ -1,35 +1,15 @@
 import { Col, Container, Row } from "react-bootstrap";
-import { FaArrowAltCircleLeft, FaArrowAltCircleRight, FaAws } from "react-icons/fa";
-import {
-  DiCss3,
-  DiGit,
-  DiHtml5,
-  DiJavascript1,
-  DiMongodb,
-  DiNodejs,
-  DiPython,
-  DiReact,
-  DiVisualstudio,
-} from "react-icons/di";
-import {
-  SiExpress,
-  SiFirebase,
-  SiGithub,
-  SiGitlab,
-  SiHeroku,
-  SiJira,
-  SiNextdotjs,
-  SiPostman,
-  SiRedux,
-  SiTrello,
-  SiVercel,
-} from "react-icons/si";
+import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
+import { usePortfolioContent } from "../../content/PortfolioContentContext";
+import { getIconComponent } from "../../content/iconMap";
 import Particle from "../Utils/Particle";
 import ReactiveButton from "../Utils/ReactiveButton";
 import AboutCard from "./AboutCard";
 import Techstack from "./Techstack";
 
 function About() {
+  const { content } = usePortfolioContent();
+
   return (
     <Container fluid className="page-section">
       <Particle />
@@ -71,30 +51,25 @@ function About() {
         </Row>
         <h1 className="page-heading">Skillset</h1>
         <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
-          <Techstack logo={<DiJavascript1 />} desc="Javascript" />
-          <Techstack logo={<DiReact />} desc="React" />
-          <Techstack logo={<DiNodejs />} desc="Node.js" />
-          <Techstack logo={<SiNextdotjs />} desc="Next.js" />
-          <Techstack logo={<SiFirebase />} desc="Firebase" />
-          <Techstack logo={<SiExpress />} desc="Express.js" />
-          <Techstack logo={<DiMongodb />} desc="MongoDB" />
-          <Techstack logo={<SiRedux />} desc="Redux" />
-          <Techstack logo={<DiHtml5 />} desc="HTML" />
-          <Techstack logo={<DiCss3 />} desc="CSS" />
-          <Techstack logo={<DiPython />} desc="Python" />
-          <Techstack logo={<DiGit />} desc="Git" />
-          <Techstack logo={<FaAws />} desc="AWS" />
+          {content.skillset.map((item) => {
+            const Icon = getIconComponent(item.icon);
+            if (!Icon) {
+              return null;
+            }
+
+            return <Techstack key={`${item.icon}-${item.desc}`} logo={<Icon />} desc={item.desc} />;
+          })}
         </Row>
         <h1 className="page-heading">Tech Tools</h1>
         <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
-          <Techstack logo={<DiVisualstudio />} desc="Visual Studio" />
-          <Techstack logo={<SiGithub />} desc="Github" />
-          <Techstack logo={<SiVercel />} desc="Vercel" />
-          <Techstack logo={<SiPostman />} desc="Postman" />
-          <Techstack logo={<SiHeroku />} desc="Heroku" />
-          <Techstack logo={<SiGitlab />} desc="Gitlab" />
-          <Techstack logo={<SiJira />} desc="Jira" />
-          <Techstack logo={<SiTrello />} desc="Trello" />
+          {content.tools.map((item) => {
+            const Icon = getIconComponent(item.icon);
+            if (!Icon) {
+              return null;
+            }
+
+            return <Techstack key={`${item.icon}-${item.desc}`} logo={<Icon />} desc={item.desc} />;
+          })}
         </Row>
       </Container>
     </Container>

@@ -1,5 +1,5 @@
-import { AiFillGithub, AiOutlineTwitter } from "react-icons/ai";
-import { FaFacebook, FaLinkedinIn } from "react-icons/fa";
+import { usePortfolioContent } from "../../content/PortfolioContentContext";
+import { getIconComponent } from "../../content/iconMap";
 
 interface SocialIconsProps {
   ulClassName?: string;
@@ -7,50 +7,31 @@ interface SocialIconsProps {
 }
 
 function SocialIcons({ ulClassName, liClassName }: SocialIconsProps) {
+  const { content } = usePortfolioContent();
+
   return (
     <ul className={ulClassName}>
-      <li className={liClassName}>
-        <a
-          href="https://fb.com/krochet94"
-          className="text-white"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaFacebook />
-        </a>
-      </li>
-      <li className={liClassName}>
-        <a
-          href="https://www.linkedin.com/in/krochet94"
-          className="text-white"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaLinkedinIn />
-        </a>
-      </li>
+      {content.socialLinks.map((link) => {
+        const Icon = getIconComponent(link.icon);
+        if (!Icon) {
+          return null;
+        }
 
-      <li className={liClassName}>
-        <a
-          href="https://twitter.com/krochet94"
-          className="text-white"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <AiOutlineTwitter />
-        </a>
-      </li>
-
-      <li className={liClassName}>
-        <a
-          href="https://github.com/krochet94"
-          className="text-white"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <AiFillGithub />
-        </a>
-      </li>
+        return (
+          <li className={liClassName} key={`${link.platform}-${link.url}`}>
+            <a
+              href={link.url}
+              className="text-white"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={link.platform}
+              title={link.platform}
+            >
+              <Icon />
+            </a>
+          </li>
+        );
+      })}
     </ul>
   );
 }

@@ -1,10 +1,13 @@
 import { Col, Container, Row } from "react-bootstrap";
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
+import { usePortfolioContent } from "../../content/PortfolioContentContext";
 import ProjectCard from "./ProjectCards";
 import Particle from "../Utils/Particle";
 import ReactiveButton from "../Utils/ReactiveButton";
 
 function Projects() {
+  const { content } = usePortfolioContent();
+
   return (
     <Container fluid className="page-section text-center">
       <Particle />
@@ -32,104 +35,18 @@ function Projects() {
             />
           </Col>
 
-          <Col lg={6} className="project-card">
-            <ProjectCard
-              imgPath="https://krochet94.github.io/Portfolio/img/phonealone.png"
-              isBlog={false}
-              title="PhoneAlone"
-              description="Smartphone E-commerce projects using MERN Stack, complete with CRUD for user/product/order, Login/Register, Add Review, Payment using Stripe API, data visualization and many more FUNCTIONALITIES."
-              ghLink="https://github.com/krochet94/Phone_Alone"
-              demoLink="https://phone-alone.vercel.app/"
-            />
-          </Col>
-
-          <Col lg={6} className="project-card">
-            <ProjectCard
-              imgPath="https://krochet94.github.io/Portfolio/img/time-tracker.png"
-              isBlog={false}
-              title="Time Tracker"
-              description="A Simple Time Tracking App using React.js, Firebase(Auth, Firestore Database and Hosting) and MUI"
-              ghLink="https://github.com/krochet94/react-time-tracker"
-              demoLink="https://time-tracker-react-278d0.web.app"
-            />
-          </Col>
-
-          <Col lg={6} className="project-card">
-            <ProjectCard
-              imgPath="https://krochet94.github.io/Portfolio/img/todoApp-reactFirebase.jpg"
-              isBlog={false}
-              title="Simple Todo App"
-              description="A simple todo web app using Next, Firebase and Mantine.dev. Have basic create, update, delete, filter and sort functionalities."
-              ghLink="https://github.com/krochet94/Simple-Todo-App"
-              demoLink="https://simple-todo-app-rose.vercel.app"
-            />
-          </Col>
-
-          <Col lg={6} className="project-card">
-            <ProjectCard
-              imgPath="https://krochet94.github.io/Portfolio/img/next-simple-api.png"
-              isBlog={false}
-              title="Simple Api Fetching and Display"
-              description="Simple Api Fetching and Display using NextJs and MUI."
-              ghLink="https://github.com/krochet94/nextjs-simple-api"
-              demoLink="https://nextjs-simple-api-zeta.vercel.app"
-            />
-          </Col>
-
-          <Col lg={6} className="project-card">
-            <ProjectCard
-              imgPath="https://krochet94.github.io/Portfolio/img/randomquotemachine-react.jpg"
-              isBlog={false}
-              title="Random Quote Machine"
-              description="A simple random quote machine project using React for FreeCodeCamp Certification. Additional CDNs used were React-DOM, Babel, JQuery, Bootstrap 5, Font-awesome and the FCC testable project"
-              ghLink="https://github.com/krochet94/Random-Quote-Machine_React"
-              demoLink="https://krochet94.github.io/Random-Quote-Machine_React/"
-            />
-          </Col>
-
-          <Col lg={6} className="project-card">
-            <ProjectCard
-              imgPath="https://krochet94.github.io/Portfolio/img/markdownpreviewer-react.jpg"
-              isBlog={false}
-              title="Markdown Previewer"
-              description="A simple markdown previewer project using React for FreeCodeCamp Certification. Additional CDNs used were React-DOM, Babel, Bootstrap 5, Marked and the FCC testable project"
-              ghLink="https://github.com/krochet94/Markdown-Previewer_React"
-              demoLink="https://krochet94.github.io/Markdown-Previewer_React/"
-            />
-          </Col>
-
-          <Col lg={6} className="project-card">
-            <ProjectCard
-              imgPath="https://krochet94.github.io/Portfolio/img/drummachine-react.jpg"
-              isBlog={false}
-              title="Drum Machine"
-              description="A simple markdown previewer project using React for FreeCodeCamp Certification. Additional CDNs used were React-DOM, Babel, Bootstrap 5 and the FCC testable project"
-              ghLink="https://github.com/krochet94/Drum-Machine_React"
-              demoLink="https://krochet94.github.io/Drum-Machine_React/"
-            />
-          </Col>
-
-          <Col lg={6} className="project-card">
-            <ProjectCard
-              imgPath="https://krochet94.github.io/Portfolio/img/jscalculator-react.jpg"
-              isBlog={false}
-              title="Javascript Calculator"
-              description="A simple javascript calculator project using React for FreeCodeCamp Certification. Additional CDNs used were React-DOM, Babel, Bootstrap 5 and the FCC testable project"
-              ghLink="https://github.com/krochet94/JS-Calculator_React"
-              demoLink="https://krochet94.github.io/JS-Calculator_React/"
-            />
-          </Col>
-
-          <Col lg={6} className="project-card">
-            <ProjectCard
-              imgPath="https://krochet94.github.io/Portfolio/img/pomodorotimer-react.jpg"
-              isBlog={false}
-              title="Pomodoro Timer"
-              description="A simple javascript calculator project using React for FreeCodeCamp Certification. Additional CDNs used were React-DOM, Babel, Materialize, Material Icons and the FCC testable project"
-              ghLink="https://github.com/krochet94/Pomodoro-Timer_React/"
-              demoLink="https://krochet94.github.io/Pomodoro-Timer_React/"
-            />
-          </Col>
+          {content.projects.map((project) => (
+            <Col lg={6} className="project-card" key={`${project.title}-${project.ghLink}`}>
+              <ProjectCard
+                imgPath={project.imgPath}
+                isBlog={project.isBlog}
+                title={project.title}
+                description={project.description}
+                ghLink={project.ghLink}
+                demoLink={project.demoLink}
+              />
+            </Col>
+          ))}
         </Row>
       </Container>
     </Container>
