@@ -1,9 +1,8 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import Typewriter from "typewriter-effect";
+import { Col, Container, Row } from "react-bootstrap";
 import { FaArrowAltCircleRight } from "react-icons/fa";
-import ReactiveButton from "../Utils/ReactiveButton.js";
+import Typewriter from "typewriter-effect";
 import Particle from "../Utils/Particle";
+import ReactiveButton from "../Utils/ReactiveButton";
 
 function Home() {
   return (
@@ -15,8 +14,8 @@ function Home() {
             Hi!{" "}
             <span className="wave" role="img" aria-labelledby="wave">
               👋🏻
-            </span>
-            {" "}I am
+            </span>{" "}
+            I am
           </h1>
           <h1 className="heading-name py-4">
             <strong className="main-name"> CARL ARAGONCILLO</strong>
@@ -41,7 +40,7 @@ function Home() {
           <ReactiveButton
             idleText={
               <>
-                Let's Get Started <FaArrowAltCircleRight />
+                Let&apos;s Get Started <FaArrowAltCircleRight />
               </>
             }
             to="/projects"

@@ -1,34 +1,33 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import { FaArrowAltCircleRight, FaArrowAltCircleLeft, FaAws } from "react-icons/fa";
+import { Col, Container, Row } from "react-bootstrap";
+import { FaArrowAltCircleLeft, FaArrowAltCircleRight, FaAws } from "react-icons/fa";
 import {
-  DiJavascript1,
-  DiReact,
-  DiNodejs,
-  DiMongodb,
-  DiPython,
+  DiCss3,
   DiGit,
   DiHtml5,
-  DiCss3,
+  DiJavascript1,
+  DiMongodb,
+  DiNodejs,
+  DiPython,
+  DiReact,
   DiVisualstudio,
 } from "react-icons/di";
 import {
   SiExpress,
-  SiRedux,
-  SiPostman,
-  SiHeroku,
+  SiFirebase,
   SiGithub,
   SiGitlab,
-  SiFirebase,
+  SiHeroku,
   SiJira,
-  SiTrello,
   SiNextdotjs,
-  SiVercel
+  SiPostman,
+  SiRedux,
+  SiTrello,
+  SiVercel,
 } from "react-icons/si";
 import Particle from "../Utils/Particle";
-import ReactiveButton from "../Utils/ReactiveButton.js";
+import ReactiveButton from "../Utils/ReactiveButton";
+import AboutCard from "./AboutCard";
 import Techstack from "./Techstack";
-import Aboutcard from "./AboutCard";
 
 function About() {
   return (
@@ -59,10 +58,14 @@ function About() {
           </Col>
           <Col xs={12} className="about-bio">
             <Col lg={5} xs={12} className="about-img">
-              <img src={"https://krochet94.github.io/Portfolio/img/about.jpg"} alt="about" className="img-fluid" />
+              <img
+                src="https://krochet94.github.io/Portfolio/img/about.jpg"
+                alt="about"
+                className="img-fluid"
+              />
             </Col>
             <Col lg={7} xs={12}>
-              <Aboutcard />
+              <AboutCard />
             </Col>
           </Col>
         </Row>

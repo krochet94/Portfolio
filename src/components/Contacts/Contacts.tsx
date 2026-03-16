@@ -1,50 +1,50 @@
-import React, { useRef, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import Particle from "../Utils/Particle";
-import ReactiveButton from "../Utils/ReactiveButton.js";
-import { FaHome, FaArrowAltCircleLeft } from "react-icons/fa";
-import {
-  MdDownload,
-  MdLocationOn,
-  MdOutlineEmail,
-  MdLocalPhone,
-} from "react-icons/md";
-import SocialIcons from "../Utils/SocialIcons.js";
+import { FormEvent, useRef, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import { FaArrowAltCircleLeft, FaHome } from "react-icons/fa";
+import { MdDownload, MdLocalPhone, MdLocationOn, MdOutlineEmail } from "react-icons/md";
 import emailjs from "emailjs-com";
+import Particle from "../Utils/Particle";
+import ReactiveButton from "../Utils/ReactiveButton";
+import SocialIcons from "../Utils/SocialIcons";
 
 function Contacts() {
-  var error = true;
-  const form = useRef();
+  const form = useRef<HTMLFormElement | null>(null);
   const [sent, setSent] = useState(false);
 
-  const sendEmail = (e) => {
-    error = true;
-    if (e.target.customer_name.value === "") {
-      error = false;
-      e.target.customer_name.classList.add("error");
-    }
-    if (
-      e.target.customer_email.value.indexOf("@", 0) < 0 ||
-      e.target.customer_email.value.indexOf(".", 0) < 0
-    ) {
-      error = false;
-      e.target.customer_email.classList.add("error");
-    }
-    if (e.target.customer_message.value === "") {
-      error = false;
-      e.target.customer_message.classList.add("error");
-    }
+  const sendEmail = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (error) {
+
+    let isValid = true;
+    const target = e.currentTarget;
+    const elements = target.elements as HTMLFormControlsCollection & {
+      customer_name: HTMLInputElement;
+      customer_email: HTMLInputElement;
+      customer_message: HTMLTextAreaElement;
+    };
+
+    const nameInput = elements.customer_name;
+    const emailInput = elements.customer_email;
+    const messageInput = elements.customer_message;
+
+    if (nameInput.value === "") {
+      isValid = false;
+      nameInput.classList.add("error");
+    }
+
+    if (emailInput.value.indexOf("@") < 0 || emailInput.value.indexOf(".") < 0) {
+      isValid = false;
+      emailInput.classList.add("error");
+    }
+
+    if (messageInput.value === "") {
+      isValid = false;
+      messageInput.classList.add("error");
+    }
+
+    if (isValid && form.current) {
       setSent(true);
-      error = true;
       emailjs
-        .sendForm(
-          'service_gbef17z',
-          'template_34877wa',
-          form.current,
-          'DdDLxu60Bl4u9mxSr'
-        )
+        .sendForm("service_gbef17z", "template_34877wa", form.current, "DdDLxu60Bl4u9mxSr")
         .then(
           (result) => {
             console.log(result.text);
@@ -100,11 +100,12 @@ function Contacts() {
                   <MdLocalPhone /> +63 917 372 2337
                 </li>
               </ul>
-              <SocialIcons
-                ulClassName="p-0 m-1 p-2"
-                liClassName="p-3 d-inline h2"
-              />
-              <a href="https://krochet94.github.io/Portfolio/CarlAragoncillo-CV.pdf" target="_blank" rel="noopener noreferrer">
+              <SocialIcons ulClassName="p-0 m-1 p-2" liClassName="p-3 d-inline h2" />
+              <a
+                href="https://krochet94.github.io/Portfolio/CarlAragoncillo-CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <div className="btn w-100 project-btn m-2 p-2">
                   <MdDownload /> DOWNLOAD CV
                 </div>
@@ -118,21 +119,21 @@ function Contacts() {
                   name="customer_name"
                   className="form-control"
                   placeholder="Name"
-                  onFocus={(e) => e.target.classList.remove("error")}
+                  onFocus={(event) => event.currentTarget.classList.remove("error")}
                 />
                 <input
                   type="text"
                   name="customer_email"
                   className="form-control"
                   placeholder="Email"
-                  onFocus={(e) => e.target.classList.remove("error")}
+                  onFocus={(event) => event.currentTarget.classList.remove("error")}
                 />
                 <textarea
                   name="customer_message"
                   className="form-control"
                   rows={8}
                   placeholder="Enter your message here"
-                  onFocus={(e) => e.target.classList.remove("error")}
+                  onFocus={(event) => event.currentTarget.classList.remove("error")}
                 />
                 {sent ? (
                   <input
@@ -142,11 +143,7 @@ function Contacts() {
                     disabled
                   />
                 ) : (
-                  <input
-                    type="submit"
-                    value="SEND"
-                    className="w-100 btn project-btn p-2"
-                  />
+                  <input type="submit" value="SEND" className="w-100 btn project-btn p-2" />
                 )}
               </form>
             </Col>
