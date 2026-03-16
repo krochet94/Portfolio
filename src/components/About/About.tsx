@@ -1,14 +1,26 @@
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 import { usePortfolioContent } from "../../content/PortfolioContentContext";
 import { getIconComponent } from "../../content/iconMap";
 import Particle from "../Utils/Particle";
 import ReactiveButton from "../Utils/ReactiveButton";
+import ToImageSrc from "../Utils/ToImageSrc";
 import AboutCard from "./AboutCard";
 import Techstack from "./Techstack";
 
 function About() {
-  const { content } = usePortfolioContent();
+  const { content, imageSrcByPath } = usePortfolioContent();
+  const [isImageLoading, setIsImageLoading] = useState(true);
+  const aboutImageRef = useRef<HTMLImageElement | null>(null);
+  const aboutImageSrc = useMemo(
+    () => imageSrcByPath[content.about.imgPath.trim()] ?? ToImageSrc(content.about.imgPath),
+    [content.about.imgPath, imageSrcByPath],
+  );
+
+  useEffect(() => {
+    setIsImageLoading(!(aboutImageRef.current?.complete ?? false));
+  }, [aboutImageSrc]);
 
   return (
     <Container fluid className="page-section">
@@ -38,11 +50,17 @@ function About() {
           </Col>
           <Col xs={12} className="about-bio">
             <Col lg={5} xs={12} className="about-img">
-              <img
-                src="https://krochet94.github.io/Portfolio/img/about.jpg"
-                alt="about"
-                className="img-fluid"
-              />
+              <div className="about-image-wrapper">
+                {isImageLoading && <div className="image-loader" aria-label="Loading about image" />}
+                <img
+                  ref={aboutImageRef}
+                  src={aboutImageSrc}
+                  alt="about"
+                  className={`img-fluid about-image ${isImageLoading ? "image-hidden" : ""}`}
+                  onLoad={() => setIsImageLoading(false)}
+                  onError={() => setIsImageLoading(false)}
+                />
+              </div>
             </Col>
             <Col lg={7} xs={12}>
               <AboutCard />

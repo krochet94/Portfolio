@@ -26,6 +26,7 @@ export interface ContactContent {
 }
 
 export interface AboutContent {
+  imgPath: string;
   bioParagraphs: string[];
 }
 

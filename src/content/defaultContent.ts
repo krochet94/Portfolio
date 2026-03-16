@@ -10,7 +10,8 @@ export const defaultPortfolioContent: PortfolioContent = {
   ],
   projects: [
     {
-      imgPath: "https://krochet94.github.io/Portfolio/img/phonealone.png",
+      imgPath:
+        "https://raw.githubusercontent.com/krochet94/project_config/main/images/portfolio_phonealone.png",
       title: "PhoneAlone",
       description:
         "Smartphone E-commerce projects using MERN Stack, complete with CRUD for user/product/order, Login/Register, Add Review, Payment using Stripe API, data visualization and many more FUNCTIONALITIES.",
@@ -19,7 +20,8 @@ export const defaultPortfolioContent: PortfolioContent = {
       isBlog: false,
     },
     {
-      imgPath: "https://krochet94.github.io/Portfolio/img/time-tracker.png",
+      imgPath:
+        "https://raw.githubusercontent.com/krochet94/project_config/main/images/portfolio_time-tracker.png",
       title: "Time Tracker",
       description:
         "A Simple Time Tracking App using React.js, Firebase(Auth, Firestore Database and Hosting) and MUI",
@@ -93,6 +95,8 @@ export const defaultPortfolioContent: PortfolioContent = {
     phone: "+63 930 528 1043",
   },
   about: {
+    imgPath:
+      "https://raw.githubusercontent.com/krochet94/project_config/main/images/portfolio_about.jpg",
     bioParagraphs: [
       "Motivated and detail-oriented Full Stack Web Developer specialized in MERN Stack Technology, with a passion for building modern, scalable web applications.",
       "Proficient in Javascript, React, Node, Typescript and Python, with a strong understanding of object-oriented programming principles. Skilled in working with the MERN and Next.js and building full-stack web applications. Proficient in integrating GCP/Firebase for realtime database and authentication.",

@@ -399,6 +399,44 @@ button:focus {
   color: white !important;
 }
 
+.project-image-wrapper,
+.about-image-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+}
+
+.project-image,
+.about-image {
+  width: 100%;
+  display: block;
+  transition: opacity 0.25s ease-in;
+}
+
+.image-hidden {
+  opacity: 0;
+}
+
+.image-loader {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  width: 38px;
+  height: 38px;
+  border: 4px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: image-spin 0.7s linear infinite;
+}
+
+@keyframes image-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .btn:focus {
   outline: none !important;
   box-shadow: none !important;

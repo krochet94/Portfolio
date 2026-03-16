@@ -26,7 +26,7 @@ Personal portfolio website built with **React + TypeScript + Vite**, and deploye
 
 At runtime, the app attempts to load portfolio content from:
 
-- `VITE_PORTFOLIO_CONTENT_URL`
+- `VITE_PORTFOLIO_REPO_URL`
 
 If the URL is missing or the request fails, the app falls back to `src/content/defaultContent.ts`.
 
@@ -57,13 +57,13 @@ npm install
 Create a `.env` file in the project root:
 
 ```env
-VITE_PORTFOLIO_CONTENT_URL=https://raw.githubusercontent.com/krochet94/project_config/main/portfolio-content.json
+VITE_PORTFOLIO_REPO_URL=https://raw.githubusercontent.com/krochet94/project_config/main/portfolio-content.json
 VITE_QUOTES_API_URL=https://quoteslate.vercel.app/api/quotes/random?count=50
 ```
 
 Notes:
 
-- `VITE_PORTFOLIO_CONTENT_URL` is optional (app uses local defaults when absent/unreachable).
+- `VITE_PORTFOLIO_REPO_URL` is optional (app uses local defaults when absent/unreachable).
 - `VITE_QUOTES_API_URL` is optional (About page uses built-in fallback quotes when absent/unreachable).
 
 ### Run Locally

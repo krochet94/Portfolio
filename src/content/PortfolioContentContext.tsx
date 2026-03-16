@@ -4,12 +4,14 @@ import type { PortfolioContent, ProjectItem, SocialLinkItem, TechItem } from "..
 
 interface PortfolioContentContextValue {
   content: PortfolioContent;
+  imageSrcByPath: Record<string, string>;
   loading: boolean;
   error: string | null;
 }
 
 const PortfolioContentContext = createContext<PortfolioContentContextValue>({
   content: defaultPortfolioContent,
+  imageSrcByPath: {},
   loading: true,
   error: null,
 });
@@ -19,6 +21,28 @@ const isRecord = (value: unknown): value is Record<string, unknown> =>
 
 const isNonEmptyString = (value: unknown): value is string =>
   typeof value === "string" && value.trim().length > 0;
+
+const isAbsoluteHttpUrl = (value: string): boolean => /^(https?:)?\/\//.test(value);
+
+const blobToDataUrl = (blob: Blob): Promise<string> =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      if (typeof reader.result === "string") {
+        resolve(reader.result);
+        return;
+      }
+
+      reject(new Error("Failed to convert image blob to base64 data URL."));
+    };
+
+    reader.onerror = () => {
+      reject(reader.error ?? new Error("Unable to read image blob as base64 data URL."));
+    };
+
+    reader.readAsDataURL(blob);
+  });
 
 const normalizeProjects = (value: unknown): ProjectItem[] | null => {
   if (!Array.isArray(value)) {
@@ -117,6 +141,9 @@ const normalizeContent = (data: unknown): PortfolioContent => {
 
   const about = isRecord(data.about)
     ? {
+        imgPath: isNonEmptyString(data.about.imgPath)
+          ? data.about.imgPath
+          : defaultPortfolioContent.about.imgPath,
         bioParagraphs:
           normalizeStringArray(data.about.bioParagraphs) ??
           defaultPortfolioContent.about.bioParagraphs,
@@ -142,6 +169,7 @@ interface PortfolioContentProviderProps {
 
 export function PortfolioContentProvider({ children }: PortfolioContentProviderProps) {
   const [content, setContent] = useState<PortfolioContent>(defaultPortfolioContent);
+  const [imageSrcByPath, setImageSrcByPath] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -149,7 +177,7 @@ export function PortfolioContentProvider({ children }: PortfolioContentProviderP
     let isCancelled = false;
 
     const loadContent = async () => {
-      const sourceUrl = import.meta.env.VITE_PORTFOLIO_CONTENT_URL?.trim();
+      const sourceUrl = `${import.meta.env.VITE_PORTFOLIO_REPO_URL?.trim()}/portfolio-content.json`;
 
       if (!sourceUrl) {
         setLoading(false);
@@ -188,13 +216,81 @@ export function PortfolioContentProvider({ children }: PortfolioContentProviderP
     };
   }, []);
 
+  useEffect(() => {
+    let isCancelled = false;
+
+    const imagePaths = Array.from(
+      new Set(
+        [content.about.imgPath, ...content.projects.map((project) => project.imgPath)]
+          .map((path) => path.trim())
+          .filter(Boolean)
+      )
+    );
+
+    console.log(imagePaths);
+
+    if (!imagePaths.length) {
+      setImageSrcByPath({});
+      return undefined;
+    }
+
+    const preloadImages = async () => {
+      const entries = await Promise.all(
+        imagePaths.map(async (path) => {
+          if (path.startsWith("data:") || path.startsWith("blob:")) {
+            return [path, path] as const;
+          }
+
+          if (!isAbsoluteHttpUrl(path)) {
+            return null;
+          }
+
+          try {
+            const response = await fetch(path);
+            if (!response.ok) {
+              throw new Error(`Failed to preload image: ${response.status}`);
+            }
+
+            const blob = await response.blob();
+            const dataUrl = await blobToDataUrl(blob);
+
+            return [path, dataUrl] as const;
+          } catch {
+            return [path, path] as const;
+          }
+        })
+      );
+
+      if (!isCancelled) {
+        const nextImageSrcByPath = entries.reduce<Record<string, string>>((acc, entry) => {
+          if (!entry) {
+            return acc;
+          }
+
+          const [key, value] = entry;
+          acc[key] = value;
+          return acc;
+        }, {});
+
+        setImageSrcByPath(nextImageSrcByPath);
+      }
+    };
+
+    preloadImages();
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [content]);
+
   const value = useMemo(
     () => ({
       content,
+      imageSrcByPath,
       loading,
       error,
     }),
-    [content, loading, error]
+    [content, imageSrcByPath, loading, error]
   );
 
   return <PortfolioContentContext.Provider value={value}>{children}</PortfolioContentContext.Provider>;
