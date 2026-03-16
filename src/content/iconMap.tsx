@@ -1,6 +1,7 @@
 import type { IconType } from "react-icons";
 import { AiFillGithub, AiOutlineTwitter } from "react-icons/ai";
 import {
+  DiBootstrap,
   DiCss3,
   DiGit,
   DiHtml5,
@@ -11,24 +12,35 @@ import {
   DiReact,
   DiVisualstudio,
 } from "react-icons/di";
-import { FaAws, FaFacebook, FaLinkedinIn } from "react-icons/fa";
+import { FaAws, FaBrain, FaChrome, FaCogs, FaFacebook, FaLinkedinIn, FaRobot } from "react-icons/fa";
 import {
   SiExpress,
   SiFirebase,
   SiGithub,
+  SiGoogle,
   SiGitlab,
   SiHeroku,
   SiJira,
+  SiMui,
+  SiMysql,
   SiNextdotjs,
+  SiOpenai,
+  SiPostgresql,
   SiPostman,
   SiRedux,
+  SiSentry,
+  SiTailwindcss,
   SiTrello,
+  SiTypescript,
   SiVercel,
+  SiVite,
+  SiWebpack,
 } from "react-icons/si";
 
 const iconMap: Record<string, IconType> = {
   AiFillGithub,
   AiOutlineTwitter,
+  DiBootstrap,
   DiCss3,
   DiGit,
   DiHtml5,
@@ -39,19 +51,33 @@ const iconMap: Record<string, IconType> = {
   DiReact,
   DiVisualstudio,
   FaAws,
+  FaBrain,
+  FaChrome,
+  FaCogs,
   FaFacebook,
   FaLinkedinIn,
+  FaRobot,
   SiExpress,
   SiFirebase,
   SiGithub,
+  SiGoogle,
   SiGitlab,
   SiHeroku,
   SiJira,
+  SiMui,
+  SiMysql,
   SiNextdotjs,
+  SiOpenai,
+  SiPostgresql,
   SiPostman,
   SiRedux,
+  SiSentry,
+  SiTailwindcss,
   SiTrello,
+  SiTypescript,
   SiVercel,
+  SiVite,
+  SiWebpack,
 };
 
 export function getIconComponent(iconName: string): IconType | null {
