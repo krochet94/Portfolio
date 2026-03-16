@@ -47,11 +47,11 @@ function Contacts() {
       setSent(true);
       try {
         const result: EmailJSResponseStatus = await emailjs.sendForm(
-          "service_gbef17z",
-          "template_34877wa",
+          import.meta.env.VITE_EMAIL_JS_SERVICE_ID,
+          import.meta.env.VITE_EMAIL_JS_TEMPLATE_ID,
           form.current,
           {
-            publicKey: "DdDLxu60Bl4u9mxSr",
+            publicKey: import.meta.env.VITE_EMAIL_JS_PUBLIC_KEY,
           }
         );
         console.log(result.text);
