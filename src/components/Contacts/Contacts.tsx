@@ -2,7 +2,7 @@ import { FormEvent, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { FaArrowAltCircleLeft, FaHome } from "react-icons/fa";
 import { MdDownload, MdLocalPhone, MdLocationOn, MdOutlineEmail } from "react-icons/md";
-import emailjs from "emailjs-com";
+import emailjs, { type EmailJSResponseStatus } from "@emailjs/browser";
 import Particle from "../Utils/Particle";
 import ReactiveButton from "../Utils/ReactiveButton";
 import SocialIcons from "../Utils/SocialIcons";
@@ -11,7 +11,7 @@ function Contacts() {
   const form = useRef<HTMLFormElement | null>(null);
   const [sent, setSent] = useState(false);
 
-  const sendEmail = (e: FormEvent<HTMLFormElement>) => {
+  const sendEmail = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     let isValid = true;
@@ -43,17 +43,21 @@ function Contacts() {
 
     if (isValid && form.current) {
       setSent(true);
-      emailjs
-        .sendForm("service_gbef17z", "template_34877wa", form.current, "DdDLxu60Bl4u9mxSr")
-        .then(
-          (result) => {
-            console.log(result.text);
-            setSent(true);
-          },
-          (error) => {
-            console.log(error.text);
+      try {
+        const result: EmailJSResponseStatus = await emailjs.sendForm(
+          "service_gbef17z",
+          "template_34877wa",
+          form.current,
+          {
+            publicKey: "DdDLxu60Bl4u9mxSr",
           }
         );
+        console.log(result.text);
+        setSent(true);
+      } catch (error) {
+        console.error(error);
+        setSent(false);
+      }
     }
   };
 

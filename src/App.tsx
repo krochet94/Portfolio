@@ -22,10 +22,10 @@ function App() {
   }, []);
 
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <div
         id={load ? "preloader" : "preloader-none"}
-        style={{ backgroundImage: "url(/img/pre.svg)" }}
+        style={{ backgroundImage: `url(${import.meta.env.BASE_URL}img/pre.svg)` }}
       />
       <div className="App" id={load ? "no-scroll" : "scroll"}>
         <Navbar />
