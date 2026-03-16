@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
+import { FaArrowAltCircleRight, FaArrowAltCircleLeft, FaAws } from "react-icons/fa";
 import {
   DiJavascript1,
   DiReact,
@@ -10,11 +10,11 @@ import {
   DiGit,
   DiHtml5,
   DiCss3,
+  DiVisualstudio,
 } from "react-icons/di";
 import {
   SiExpress,
   SiRedux,
-  SiVisualstudiocode,
   SiPostman,
   SiHeroku,
   SiGithub,
@@ -22,7 +22,6 @@ import {
   SiFirebase,
   SiJira,
   SiTrello,
-  SiAmazonaws,
   SiNextdotjs,
   SiVercel
 } from "react-icons/si";
@@ -81,11 +80,11 @@ function About() {
           <Techstack logo={<DiCss3 />} desc="CSS" />
           <Techstack logo={<DiPython />} desc="Python" />
           <Techstack logo={<DiGit />} desc="Git" />
-          <Techstack logo={<SiAmazonaws />} desc="AWS" />
+          <Techstack logo={<FaAws />} desc="AWS" />
         </Row>
         <h1 className="page-heading">Tech Tools</h1>
         <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
-          <Techstack logo={<SiVisualstudiocode />} desc="Visual Studio" />
+          <Techstack logo={<DiVisualstudio />} desc="Visual Studio" />
           <Techstack logo={<SiGithub />} desc="Github" />
           <Techstack logo={<SiVercel />} desc="Vercel" />
           <Techstack logo={<SiPostman />} desc="Postman" />
