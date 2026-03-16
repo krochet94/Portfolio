@@ -73,6 +73,16 @@ const normalizeSocialLinks = (value: unknown): SocialLinkItem[] | null => {
   return socialLinks.length ? socialLinks : null;
 };
 
+const normalizeStringArray = (value: unknown): string[] | null => {
+  if (!Array.isArray(value)) {
+    return null;
+  }
+
+  const values = value.filter(isNonEmptyString);
+
+  return values.length ? values : null;
+};
+
 const normalizeContent = (data: unknown): PortfolioContent => {
   if (!isRecord(data)) {
     return defaultPortfolioContent;
@@ -93,8 +103,25 @@ const normalizeContent = (data: unknown): PortfolioContent => {
         cvUrl: isNonEmptyString(data.contact.cvUrl)
           ? data.contact.cvUrl
           : defaultPortfolioContent.contact.cvUrl,
+        location: isNonEmptyString(data.contact.location)
+          ? data.contact.location
+          : defaultPortfolioContent.contact.location,
+        email: isNonEmptyString(data.contact.email)
+          ? data.contact.email
+          : defaultPortfolioContent.contact.email,
+        phone: isNonEmptyString(data.contact.phone)
+          ? data.contact.phone
+          : defaultPortfolioContent.contact.phone,
       }
     : defaultPortfolioContent.contact;
+
+  const about = isRecord(data.about)
+    ? {
+        bioParagraphs:
+          normalizeStringArray(data.about.bioParagraphs) ??
+          defaultPortfolioContent.about.bioParagraphs,
+      }
+    : defaultPortfolioContent.about;
 
   return {
     typewriterStrings: typewriterStrings.length
@@ -105,6 +132,7 @@ const normalizeContent = (data: unknown): PortfolioContent => {
     tools,
     socialLinks,
     contact,
+    about,
   };
 };
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import { IoMdRefreshCircle } from "react-icons/io";
+import { usePortfolioContent } from "../../content/PortfolioContentContext";
 
 interface Quote {
   quote: string;
@@ -91,6 +92,7 @@ const normalizeQuote = (item: unknown, fallbackId: number): Quote | null => {
 function AboutCard() {
   const [quotes, setQuotes] = useState<Quote[]>(FALLBACK_QUOTES);
   const [randomQuote, setRandomQuote] = useState<Quote>(FALLBACK_QUOTES[0]);
+  const { content } = usePortfolioContent();
 
   useEffect(() => {
     let isCancelled = false;
@@ -157,20 +159,17 @@ function AboutCard() {
       <Card.Body>
         <blockquote className="blockquote mb-0">
           <p style={{ textAlign: "justify" }}>
-            Motivated and detail-oriented
-            <strong className="emphasis"> Full Stack Web Developer </strong>
-            specialized in
-            <strong className="emphasis"> MERN Stack Technology</strong>, with a passion for building modern,
-            scalable web applications.
-            <br />
-            <br />
-            Proficient in Javascript, React, Node, Typescript and Python, with a strong understanding of
-            object-oriented programming principles Skilled in working with the MERN and Next.js and building
-            full-stack web applications. Proficient in integrating GCP/Firebase for realtime database and
-            authentication
-            <br />
-            <br />
-            Is experienced in agile development methodologies and working collaboratively in a team environment.
+            {content.about.bioParagraphs.map((paragraph, index) => (
+              <span key={`${paragraph}-${index}`}>
+                {paragraph}
+                {index < content.about.bioParagraphs.length - 1 && (
+                  <>
+                    <br />
+                    <br />
+                  </>
+                )}
+              </span>
+            ))}
           </p>
           <br />
           <p>"{randomQuote.quote || FALLBACK_QUOTES[0].quote}"</p>

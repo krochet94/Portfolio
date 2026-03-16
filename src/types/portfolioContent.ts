@@ -20,6 +20,13 @@ export interface SocialLinkItem {
 
 export interface ContactContent {
   cvUrl: string;
+  location: string;
+  email: string;
+  phone: string;
+}
+
+export interface AboutContent {
+  bioParagraphs: string[];
 }
 
 export interface PortfolioContent {
@@ -29,4 +36,5 @@ export interface PortfolioContent {
   tools: TechItem[];
   socialLinks: SocialLinkItem[];
   contact: ContactContent;
+  about: AboutContent;
 }

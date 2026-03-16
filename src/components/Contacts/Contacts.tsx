@@ -94,19 +94,22 @@ function Contacts() {
               <h4 className="page-heading text-start">Reach me</h4>
               <ul className="list-unstyled my-3 p-2 text-start">
                 <li className="mb-3">
-                  <MdLocationOn /> Cotabato City, Philippines
+                  <MdLocationOn />
+                  &#10240;{content.contact.location}
                 </li>
                 <li className="mb-3 text-wrap">
                   <MdOutlineEmail />
-                  &#10240;carljasoncainaragoncillo@gmail.com
-                  <br />
-                  &#10240;&#10240;&#10240;krochet94@protonmail.com
+                  &#10240;{content.contact.email}
                 </li>
                 <li className="mb-3">
-                  <MdLocalPhone /> +63 917 372 2337
+                  <MdLocalPhone />
+                  &#10240;{content.contact.phone}
                 </li>
               </ul>
-              <SocialIcons ulClassName="p-0 m-1 p-2" liClassName="p-3 d-inline h2" />
+              <SocialIcons
+                ulClassName="p-0 m-1 p-2"
+                liClassName="p-3 d-inline h2"
+              />
               <a
                 href={content.contact.cvUrl}
                 target="_blank"
@@ -125,21 +128,27 @@ function Contacts() {
                   name="customer_name"
                   className="form-control"
                   placeholder="Name"
-                  onFocus={(event) => event.currentTarget.classList.remove("error")}
+                  onFocus={(event) =>
+                    event.currentTarget.classList.remove("error")
+                  }
                 />
                 <input
                   type="text"
                   name="customer_email"
                   className="form-control"
                   placeholder="Email"
-                  onFocus={(event) => event.currentTarget.classList.remove("error")}
+                  onFocus={(event) =>
+                    event.currentTarget.classList.remove("error")
+                  }
                 />
                 <textarea
                   name="customer_message"
                   className="form-control"
                   rows={8}
                   placeholder="Enter your message here"
-                  onFocus={(event) => event.currentTarget.classList.remove("error")}
+                  onFocus={(event) =>
+                    event.currentTarget.classList.remove("error")
+                  }
                 />
                 {sent ? (
                   <input
@@ -149,7 +158,11 @@ function Contacts() {
                     disabled
                   />
                 ) : (
-                  <input type="submit" value="SEND" className="w-100 btn project-btn p-2" />
+                  <input
+                    type="submit"
+                    value="SEND"
+                    className="w-100 btn project-btn p-2"
+                  />
                 )}
               </form>
             </Col>
