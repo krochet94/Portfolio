@@ -319,6 +319,9 @@ button:focus {
 .reactive-btn-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
   padding: 20px 0px 50px 0px;
 }
 
@@ -328,6 +331,8 @@ button:focus {
   vertical-align: middle !important;
   text-align: center !important;
   font-size: 1.4em !important;
+  min-width: 220px;
+  transition: background-color 0.2s ease;
 }
 
 .reactive-btn:hover {
@@ -346,6 +351,7 @@ button:focus {
   }
   .reactive-btn {
     font-size: 1.2em !important;
+    min-width: 180px;
   }
 }
 
@@ -425,6 +431,8 @@ button:focus {
 
 .quote-btn{
   color:#608ea3;
+  cursor: pointer;
+  transition: color 0.2s ease;
 }
 
 .quote-btn:hover{
@@ -448,17 +456,23 @@ button:focus {
 }
 
 .tech-icons {
-  font-size: 4.5em;
+  position: relative;
+  font-size: 4rem;
   margin: 15px;
-  padding: 10px;
+  padding: 14px 10px;
   opacity: 0.93;
   border: 1px solid white;
   vertical-align: middle;
   text-align: center;
   border-radius: 10px;
-  display: table;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 180px;
   overflow: hidden;
-  transition: all 0.4s ease 0s;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
   background-color: #09415a ;
 }
 
@@ -469,28 +483,34 @@ button:focus {
 }
 
 .tech-icons:hover {
-  transform: scale(1.05);
-  overflow: hidden;
-  border: 2px solid white;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.tech-icons:focus,
+.tech-icons:focus-within {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+.tech-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .tech-description {
-position: absolute;
-top: 10px;
-bottom: 0;
-left:0;
-right:0;
-background: transparent;
-color: #608ea3;
-visibility: hidden;
-opacity: 0;
-transition: opacity 0.2s, visibility 0.2s;
-font-size: 20px;
-}
-
-.tech-icons:hover .tech-description {
-  visibility: visible;
+  margin: 0;
+  min-height: 2.8em;
+  padding: 0 4px;
+  color: #cde2eb;
   opacity: 1;
+  transform: none;
+  font-size: 0.24em;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
 }
 
 /* --------- */

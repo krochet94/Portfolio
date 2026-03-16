@@ -8,8 +8,10 @@ interface TechstackProps {
 
 function Techstack({ logo, desc }: TechstackProps) {
   return (
-    <Col xs={4} md={2} className="tech-icons">
-      <>{logo}</>
+    <Col xs={4} md={2} className="tech-icons" tabIndex={0} role="group" aria-label={desc}>
+      <span className="tech-icon" aria-hidden="true">
+        {logo}
+      </span>
       <p className="tech-description">{desc}</p>
     </Col>
   );

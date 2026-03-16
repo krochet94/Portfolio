@@ -1,85 +1,37 @@
 import type { IconType } from "react-icons";
-import { AiFillGithub, AiOutlineTwitter } from "react-icons/ai";
-import {
-  DiBootstrap,
-  DiCss3,
-  DiGit,
-  DiHtml5,
-  DiJavascript1,
-  DiMongodb,
-  DiNodejs,
-  DiPython,
-  DiReact,
-  DiVisualstudio,
-} from "react-icons/di";
-import { FaAws, FaBrain, FaChrome, FaCogs, FaFacebook, FaLinkedinIn, FaRobot } from "react-icons/fa";
-import {
-  SiExpress,
-  SiFirebase,
-  SiGithub,
-  SiGoogle,
-  SiGitlab,
-  SiHeroku,
-  SiJira,
-  SiMui,
-  SiMysql,
-  SiNextdotjs,
-  SiOpenai,
-  SiPostgresql,
-  SiPostman,
-  SiRedux,
-  SiSentry,
-  SiTailwindcss,
-  SiTrello,
-  SiTypescript,
-  SiVercel,
-  SiVite,
-  SiWebpack,
-} from "react-icons/si";
+import * as AiIcons from "react-icons/ai";
+import * as BsIcons from "react-icons/bs";
+import * as CgIcons from "react-icons/cg";
+import * as DiIcons from "react-icons/di";
+import * as FaIcons from "react-icons/fa";
+import * as IoIcons from "react-icons/io";
+import * as MdIcons from "react-icons/md";
+import * as SiIcons from "react-icons/si";
 
-const iconMap: Record<string, IconType> = {
-  AiFillGithub,
-  AiOutlineTwitter,
-  DiBootstrap,
-  DiCss3,
-  DiGit,
-  DiHtml5,
-  DiJavascript1,
-  DiMongodb,
-  DiNodejs,
-  DiPython,
-  DiReact,
-  DiVisualstudio,
-  FaAws,
-  FaBrain,
-  FaChrome,
-  FaCogs,
-  FaFacebook,
-  FaLinkedinIn,
-  FaRobot,
-  SiExpress,
-  SiFirebase,
-  SiGithub,
-  SiGoogle,
-  SiGitlab,
-  SiHeroku,
-  SiJira,
-  SiMui,
-  SiMysql,
-  SiNextdotjs,
-  SiOpenai,
-  SiPostgresql,
-  SiPostman,
-  SiRedux,
-  SiSentry,
-  SiTailwindcss,
-  SiTrello,
-  SiTypescript,
-  SiVercel,
-  SiVite,
-  SiWebpack,
+const iconPacksByPrefix: Record<string, Record<string, unknown>> = {
+  Ai: AiIcons,
+  Bs: BsIcons,
+  Cg: CgIcons,
+  Di: DiIcons,
+  Fa: FaIcons,
+  Io: IoIcons,
+  Md: MdIcons,
+  Si: SiIcons,
 };
 
+const isIconType = (value: unknown): value is IconType => typeof value === "function";
+
 export function getIconComponent(iconName: string): IconType | null {
-  return iconMap[iconName] ?? null;
+  if (!iconName) {
+    return null;
+  }
+
+  const prefix = iconName.slice(0, 2);
+  const iconFromPrefixPack = iconPacksByPrefix[prefix]?.[iconName];
+
+  if (isIconType(iconFromPrefixPack)) {
+    return iconFromPrefixPack;
+  }
+
+  return null;
 }

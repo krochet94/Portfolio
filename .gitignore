@@ -13,4 +13,4 @@
 /dist
 
 # misc
-.env
+# .env
