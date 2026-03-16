@@ -36,8 +36,7 @@
     "start": "serve -s dist",
     "preview": "vite preview",
     "build": "tsc --noEmit && vite build",
-    "test": "echo \"No test runner configured\"",
-    "heroku-postbuild": "npm run build"
+    "test": "echo \"No test runner configured\""
   },
   "browserslist": {
     "production": [
